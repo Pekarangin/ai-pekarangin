@@ -15,7 +15,8 @@ class Settings:
 
     # Gemini API
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
-    GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+    _raw_model: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    GEMINI_MODEL: str = "gemini-2.5-flash" if (not _raw_model or _raw_model == "gemini-1.5-flash") else _raw_model
 
     # Backend Express Integration
     BACKEND_URL: str = os.getenv("BACKEND_URL", "http://localhost:3000")
