@@ -4,8 +4,12 @@ Jalankan file ini untuk memperbarui file seed di folder `seeds/`.
 
 import json
 from pathlib import Path
-from datetime import date
-from app.data.komoditas_master import KOMODITAS_MASTER
+from app.data.komoditas_master import (
+    HARGA_SUMBER,
+    HARGA_TANGGAL_UPDATE,
+    HARGA_UPDATE_TERAKHIR,
+    KOMODITAS_MASTER,
+)
 
 SEEDS_DIR = Path(__file__).resolve().parent.parent.parent / "seeds"
 SEEDS_DIR.mkdir(parents=True, exist_ok=True)
@@ -47,13 +51,13 @@ def generate_sql_komoditas() -> str:
     return "\n".join(lines)
 
 
-def generate_sql_harga(wilayah: str = "Yogyakarta") -> str:
-    today_str = date.today().isoformat()
+def generate_sql_harga(wilayah: str = "Sleman") -> str:
     lines = [
         "-- ============================================================",
         f"-- Seed 002: Data Harga Komoditas Terkini ({wilayah})",
         "-- Disusun oleh: AI / Data Engineer (Dit Tolongin Dit)",
-        "-- Sumber harga: Badan Pangan Nasional (Bapanas) & PIHPS BI",
+        "-- Sumber harga: SIHARPA Disperindag Sleman atau baseline DIY terkurasi",
+        f"-- Tanggal data: {HARGA_UPDATE_TERAKHIR}",
         "-- ============================================================\n",
         "INSERT INTO harga_komoditas (komoditas_id, harga_rp_per_kg, sumber, tanggal_update, wilayah)"
     ]
@@ -61,8 +65,10 @@ def generate_sql_harga(wilayah: str = "Yogyakarta") -> str:
     unions = []
     for k in KOMODITAS_MASTER:
         u = (
-            f"SELECT id, {k['harga_pasar_per_kg']}, 'BAPANAS', "
-            f"'{today_str}'::DATE, '{wilayah}' FROM komoditas WHERE nama = '{k['nama']}'"
+            f"SELECT id, {k['harga_pasar_per_kg']}, '{HARGA_SUMBER[k['nama']]}', "
+            f"'{HARGA_TANGGAL_UPDATE[k['nama']]}'::DATE, "
+            f"'{wilayah if HARGA_SUMBER[k['nama']] == 'SLEMAN_DISPERINDAG' else 'DIY'}' "
+            f"FROM komoditas WHERE nama = '{k['nama']}'"
         )
         unions.append(u)
 

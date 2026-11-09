@@ -41,3 +41,10 @@ def test_recommendations_ranking():
     # Di kondisi PARTIAL_SUN, tanaman sayuran cepat panen seperti Bayam/Kangkung/Sawi/Selada harus berada di jajaran atas
     top_crops = [item.nama for item in response.rekomendasi[:5]]
     assert any(c in top_crops for c in ["Bayam", "Kangkung", "Sawi", "Selada"])
+
+def test_recommendation_leader_depends_on_sunlight():
+    full_sun = calculate_recommendations(1.5, SunlightType.FULL_SUN)
+    partial_sun = calculate_recommendations(1.5, SunlightType.PARTIAL_SUN)
+
+    assert full_sun.rekomendasi[0].nama == "Bawang merah"
+    assert partial_sun.rekomendasi[0].nama == "Bayam"

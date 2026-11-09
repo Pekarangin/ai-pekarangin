@@ -9,7 +9,7 @@
     "tingkat_kesulitan": "SEDANG",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 14,
-    "harga_pasar_per_kg": 85000,
+    "harga_pasar_per_kg": 60429,
     "estimasi_hasil_panen_per_m2_kg": 1.2,
     "panduan_singkat": "Tanam di spot sinar penuh minimal 6 jam. Siram pagi/sore hari secara konsisten. Pupuk NPK diberikan setiap 2 minggu."
   },
@@ -23,7 +23,7 @@
     "tingkat_kesulitan": "SEDANG",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 14,
-    "harga_pasar_per_kg": 65000,
+    "harga_pasar_per_kg": 63571,
     "estimasi_hasil_panen_per_m2_kg": 1.5,
     "panduan_singkat": "Butuh sinar terik dan drainase baik agar akar tidak busuk. Jaga kelembaban tanah tanpa menggenang."
   },
@@ -37,7 +37,7 @@
     "tingkat_kesulitan": "SEDANG",
     "jadwal_siram_hari": 2,
     "jadwal_pupuk_hari": 14,
-    "harga_pasar_per_kg": 40000,
+    "harga_pasar_per_kg": 31143,
     "estimasi_hasil_panen_per_m2_kg": 1.0,
     "panduan_singkat": "Tanam umbi bibit yang dipotong ujungnya 1/3 di tanah gembur. Hindari penyiraman berlebih untuk mencegah umbi busuk."
   },
@@ -51,7 +51,7 @@
     "tingkat_kesulitan": "SEDANG",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 14,
-    "harga_pasar_per_kg": 14000,
+    "harga_pasar_per_kg": 13429,
     "estimasi_hasil_panen_per_m2_kg": 2.5,
     "panduan_singkat": "Pasang ajir atau tongkat penopang sejak tinggi 20 cm. Siram pangkal batang langsung, hindari menyiram daun terlalu basah."
   },
@@ -65,7 +65,7 @@
     "tingkat_kesulitan": "MUDAH",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 7,
-    "harga_pasar_per_kg": 12000,
+    "harga_pasar_per_kg": 10000,
     "estimasi_hasil_panen_per_m2_kg": 1.8,
     "panduan_singkat": "Super cepat panen (25 hari). Sangat cocok untuk pemula dan pekarangan sempit dengan intensitas cahaya moderat."
   },
@@ -79,7 +79,7 @@
     "tingkat_kesulitan": "MUDAH",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 7,
-    "harga_pasar_per_kg": 10000,
+    "harga_pasar_per_kg": 6500,
     "estimasi_hasil_panen_per_m2_kg": 2.0,
     "panduan_singkat": "Dapat ditanam di pot, polybag atau baskom kecil. Panen dengan cara memotong pangkal agar dapat bertunas kembali (regrowth)."
   },
@@ -93,7 +93,7 @@
     "tingkat_kesulitan": "MUDAH",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 7,
-    "harga_pasar_per_kg": 25000,
+    "harga_pasar_per_kg": 22000,
     "estimasi_hasil_panen_per_m2_kg": 1.2,
     "panduan_singkat": "Sangat adaptif di tempat teduh parsial (hindari terik siang agar tidak pahit). Panen daun dari lapisan terluar."
   },
@@ -107,7 +107,7 @@
     "tingkat_kesulitan": "MUDAH",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 7,
-    "harga_pasar_per_kg": 12000,
+    "harga_pasar_per_kg": 8286,
     "estimasi_hasil_panen_per_m2_kg": 1.6,
     "panduan_singkat": "Tumbuh cepat dan toleran naungan sebagian gedung. Pemupukan organik cair tiap minggu menghasilkan daun renyah."
   },
@@ -121,7 +121,7 @@
     "tingkat_kesulitan": "SEDANG",
     "jadwal_siram_hari": 2,
     "jadwal_pupuk_hari": 14,
-    "harga_pasar_per_kg": 18000,
+    "harga_pasar_per_kg": 14000,
     "estimasi_hasil_panen_per_m2_kg": 1.4,
     "panduan_singkat": "Membutuhkan media tanam gembur tanpa batu kerikil dengan kedalaman minimal 25 cm agar umbi lurus sempurna."
   },
@@ -135,7 +135,7 @@
     "tingkat_kesulitan": "SEDANG",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 14,
-    "harga_pasar_per_kg": 15000,
+    "harga_pasar_per_kg": 12000,
     "estimasi_hasil_panen_per_m2_kg": 2.2,
     "panduan_singkat": "Butuh panas penuh dan ajir penopang saat buah mulai membesar. Bersihkan daun kuning bawah untuk mencegah jamur."
   },
@@ -149,7 +149,7 @@
     "tingkat_kesulitan": "MUDAH",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 14,
-    "harga_pasar_per_kg": 14000,
+    "harga_pasar_per_kg": 9714,
     "estimasi_hasil_panen_per_m2_kg": 1.8,
     "panduan_singkat": "Tanaman merambat vertikal, sangat hemat luas tanah! Pasang tiang atau jaring rambatan di dinding/pagar pekarangan."
   },
@@ -163,7 +163,7 @@
     "tingkat_kesulitan": "MUDAH",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 14,
-    "harga_pasar_per_kg": 10000,
+    "harga_pasar_per_kg": 12714,
     "estimasi_hasil_panen_per_m2_kg": 2.5,
     "panduan_singkat": "Tumbuh merambat cepat dan panen dalam 40 hari. Sediakan rambatan di teras dan siram teratur saat pembungaan."
   },
@@ -177,7 +177,7 @@
     "tingkat_kesulitan": "MUDAH",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 14,
-    "harga_pasar_per_kg": 12000,
+    "harga_pasar_per_kg": 11000,
     "estimasi_hasil_panen_per_m2_kg": 1.5,
     "panduan_singkat": "Tanaman merambat kuat dan tahan hama. Sangat cocok memanfaatkan dinding atau pagar teras sebagai bidang rambatan."
   },
@@ -191,7 +191,7 @@
     "tingkat_kesulitan": "MUDAH",
     "jadwal_siram_hari": 1,
     "jadwal_pupuk_hari": 7,
-    "harga_pasar_per_kg": 30000,
+    "harga_pasar_per_kg": 25000,
     "estimasi_hasil_panen_per_m2_kg": 1.0,
     "panduan_singkat": "Aroma kuat membantu mengusir serangga hama lain. Petik pucuk daun secara rutin agar tanaman rimbun bercabang."
   },
@@ -205,7 +205,7 @@
     "tingkat_kesulitan": "MUDAH",
     "jadwal_siram_hari": 2,
     "jadwal_pupuk_hari": 14,
-    "harga_pasar_per_kg": 20000,
+    "harga_pasar_per_kg": 18000,
     "estimasi_hasil_panen_per_m2_kg": 1.3,
     "panduan_singkat": "Dapat ditanam dari sisa potongan akar dapur (kitchen scrap regrowth). Tumbuh subur di pot dangkal/ambang jendela."
   }

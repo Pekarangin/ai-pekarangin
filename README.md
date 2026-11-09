@@ -20,7 +20,7 @@ Microservice ini dibangun menggunakan **FastAPI (Python)** sesuai dengan **Arsit
 2. **🧮 Crop Priority Scoring Engine (`POST /api/v1/ai/rekomendasi`)**:
    - Menjalankan formula deterministik inti produk (SSOT §2):
      $$\text{Skor Prioritas} = \frac{\text{Estimasi Hemat Rp/bulan}}{\text{Luas Kebutuhan } m^2 \times \text{Waktu Panen (hari)}} \times \text{Faktor Kesesuaian Cahaya}$$
-   - Menghitung potensi penghematan belanja dapur bulanan serta estimasi penghematan ketika panen tiba berdasarkan harga pasar riil (Bapanas / PIHPS) dan rata-rata konsumsi rumah tangga (BPS Susenas).
+   - Menghitung potensi penghematan belanja dapur bulanan serta estimasi penghematan ketika panen tiba berdasarkan harga SIHARPA Disperindag Sleman (dengan baseline DIY terkurasi untuk komoditas yang tidak dipantau) dan rata-rata konsumsi rumah tangga (BPS Susenas).
 
 3. **🤖 AI Farming Assistant (`POST /api/v1/ai/chat`)**:
    - Chatbot pendampingan budidaya kontekstual via Gemini API (P3).

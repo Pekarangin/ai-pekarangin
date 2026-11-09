@@ -3,9 +3,12 @@ Formula Inti yang dirancang untuk kompetisi MAGE 12 ITS (SSOT §2 & PRD §4).
 Menghasilkan ranking komoditas terukur dalam Rupiah berdasarkan kondisi mikro pekarangan.
 """
 
-from datetime import date
 from typing import List, Dict, Any
-from app.data.komoditas_master import KOMODITAS_MASTER, SUNLIGHT_MATRIX
+from app.data.komoditas_master import (
+    HARGA_UPDATE_TERAKHIR,
+    KOMODITAS_MASTER,
+    SUNLIGHT_MATRIX,
+)
 from app.models.schemas import (
     SunlightType,
     KesesuaianBadge,
@@ -110,7 +113,7 @@ def calculate_recommendations(
     return ScoringResponseData(
         luas_m2=luas_m2,
         paparan_sinar=paparan_sinar,
-        harga_update_terakhir=date.today().isoformat(),
+        harga_update_terakhir=HARGA_UPDATE_TERAKHIR,
         total_potensi_hemat_bulanan_top3=top_3_savings,
         rekomendasi=results
     )
