@@ -25,6 +25,21 @@ def test_komoditas_endpoint():
     assert len(data) == 15
     assert data[0]["nama"] == "Cabai rawit"
 
+def test_komoditas_harga_endpoint_reports_price_metadata():
+    response = client.get("/api/v1/ai/komoditas/harga")
+    assert response.status_code == 200
+    data = response.json()["data"]
+
+    bawang = next(item for item in data if item["nama"] == "Bawang merah")
+    bayam = next(item for item in data if item["nama"] == "Bayam")
+    assert bawang["harga_rp_per_kg"] == 31143
+    assert bawang["sumber"] == "SLEMAN_DISPERINDAG"
+    assert bawang["tanggal_update"] == "2026-11-09"
+    assert bawang["wilayah"] == "Sleman"
+    assert bayam["sumber"] == "DIY_CURATED_BASELINE"
+    assert bayam["tanggal_update"] == "2026-10-13"
+    assert bayam["wilayah"] == "DIY"
+
 def test_rekomendasi_scoring_endpoint():
     payload = {
         "luas_m2": 2.0,
@@ -35,8 +50,10 @@ def test_rekomendasi_scoring_endpoint():
     assert response.status_code == 200
     json_data = response.json()
     assert json_data["success"] is True
+    assert json_data["data"]["harga_update_terakhir"] == "2026-11-09"
     rekomendasi = json_data["data"]["rekomendasi"]
     assert len(rekomendasi) == 15
+    assert rekomendasi[0]["nama"] == "Bawang merah"
     # Cabai rawit di full sun harus memiliki kecocokan COCOK
     cabai = next(c for c in rekomendasi if c["nama"] == "Cabai rawit")
     assert cabai["kesesuaian_sinar"] == "COCOK"

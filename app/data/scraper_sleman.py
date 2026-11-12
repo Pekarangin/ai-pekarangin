@@ -62,7 +62,7 @@ KONSUMSI_RT_KG = {
     "Daun bawang": 0.40,
 }
 
-# Harga baseline jika tidak ada dalam daftar pantauan inflasi harian Disperindag Sleman
+# Harga baseline DIY terkurasi untuk komoditas yang tidak dipantau portal Sleman.
 HARGA_BASELINE = {
     "Bayam": 10000,
     "Selada": 22000,
@@ -111,7 +111,8 @@ def fetch_harga_sleman(id_pasar: int = 0, tanggal: Optional[str] = None) -> List
 
 def proses_rekomendasi_sleman(id_pasar: int = 0, tanggal: Optional[str] = None) -> List[Dict[str, Any]]:
     """Memproses data harga Sleman menjadi rekomendasi tanaman pekarangan lengkap dengan penghematan & insight."""
-    raw_sleman = fetch_harga_sleman(id_pasar, tanggal)
+    tanggal_data = tanggal or datetime.date.today().isoformat()
+    raw_sleman = fetch_harga_sleman(id_pasar, tanggal_data)
     
     # Buat lookup dict harga dari hasil scraping
     harga_dict: Dict[str, int] = {}
@@ -137,7 +138,12 @@ def proses_rekomendasi_sleman(id_pasar: int = 0, tanggal: Optional[str] = None) 
             harga_per_kg = harga_dict[nama_sleman]
         else:
             harga_per_kg = HARGA_BASELINE.get(nama_tanaman, 15000)
-            sumber_harga = "Bapanas / Baseline Terkurasi DIY"
+            sumber_harga = "Baseline Terkurasi DIY"
+        kode_sumber = (
+            "SLEMAN_DISPERINDAG"
+            if sumber_harga.startswith("Pemkab Sleman")
+            else "DIY_CURATED_BASELINE"
+        )
 
         # Hitung penghematan bulanan
         hemat_per_bulan = int(harga_per_kg * konsumsi)
@@ -147,6 +153,12 @@ def proses_rekomendasi_sleman(id_pasar: int = 0, tanggal: Optional[str] = None) 
             "tanaman": nama_tanaman,
             "harga_per_kg": harga_per_kg,
             "sumber_harga": sumber_harga,
+            "kode_sumber": kode_sumber,
+            "tanggal_update": (
+                tanggal_data
+                if kode_sumber == "SLEMAN_DISPERINDAG"
+                else "2026-10-13"
+            ),
             "konsumsi_rt_kg_bulan": konsumsi,
             "estimasi_hemat_per_bulan": hemat_per_bulan,
             "insight_pekarangan": insight
@@ -164,7 +176,7 @@ def export_sql_harga_sleman(rekomendasi: List[Dict[str, Any]], target_files: Opt
         "-- ============================================================",
         f"-- Seed 002: Data Harga Komoditas Terkini (Kabupaten Sleman - {tgl_hari_ini})",
         "-- Disusun otomatis oleh: Scraper Sleman Pekarang.in",
-        "-- Sumber harga: Portal Resmi SIHARPA Disperindag Pemkab Sleman",
+        "-- Sumber harga: SIHARPA Disperindag Sleman atau baseline DIY terkurasi",
         "-- ============================================================\n",
         "INSERT INTO harga_komoditas (komoditas_id, harga_rp_per_kg, sumber, tanggal_update, wilayah)"
     ]
@@ -172,8 +184,10 @@ def export_sql_harga_sleman(rekomendasi: List[Dict[str, Any]], target_files: Opt
     unions = []
     for r in rekomendasi:
         u = (
-            f"SELECT id, {r['harga_per_kg']}, 'SLEMAN_DISPERINDAG', "
-            f"'{tgl_hari_ini}'::DATE, 'Sleman' FROM komoditas WHERE nama = '{r['tanaman']}'"
+            f"SELECT id, {r['harga_per_kg']}, '{r['kode_sumber']}', "
+            f"'{r['tanggal_update']}'::DATE, "
+            f"'{('Sleman' if r['kode_sumber'] == 'SLEMAN_DISPERINDAG' else 'DIY')}' "
+            f"FROM komoditas WHERE nama = '{r['tanaman']}'"
         )
         unions.append(u)
 
@@ -229,4 +243,3 @@ if __name__ == "__main__":
         print("=" * 80)
         export_sql_harga_sleman(rekomendasi, targets)
         print("=" * 80)
-
